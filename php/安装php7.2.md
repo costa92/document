@@ -54,5 +54,98 @@ yum -y install libxslt-devel
 yum install m4 -y
 ```
 
+安装扩展：
+
+下载PHP扩展的的 [PHP扩展下载](https://pecl.php.net/package-stats.php)
+
+* 安装 swoole
+```shell
+wget https://pecl.php.net/get/swoole-4.4.18.tgz
+tar zxvf swoole-4.4.18.tgz
+cd swoole-4.4.18
+/usr/local/php/bin/phpize
+./configure --enable-coroutine --enable-openssl  --enable-http2  --enable-async-redis --enable-sockets --enable-mysqlnd 
+make && make install
+
+vim /etc/php.ini
+# add
+extension=swoole.so
+```
+
+* 安装 redis 扩展
+```shell
+wget https://pecl.php.net/get/redis-4.2.0.tgz
+tar zxvf redis-4.2.0.tgz && cd redis-4.2.0
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config 
+make && make install
+
+vim /etc/php.ini
+# add
+extension=redis.so
+```
 
 
+* 安装 amqp 扩展
+```shell
+wget https://pecl.php.net/get/amqp-1.8.0.tgz
+tar zxvf amqp-1.8.0.tgz && cd amqp-1.8.0 
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config --with-amqp --with-librabbitmq-dir=/usr/local/rabbitmq-c-0.9.0
+make && make install
+
+vim /etc/php.ini
+# add
+extension=amqp.so
+```
+
+编译错误
+checking for amqp using pkg-config... configure: error: librabbitmq not found
+```shell
+wget https://github.com/alanxz/rabbitmq-c/archive/v0.9.0.tar.gz
+tar -xzxvf v0.9.0.tar.gz && cd rabbitmq-c-0.9.0
+yum -y install cmake
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/rabbitmq-c-0.9.0
+make && make install
+cp -R /usr/local/rabbitmq-c-0.9.0/lib64 /usr/local/rabbitmq-c-0.9.0/lib
+```
+
+注意：
+发现点蛛丝马迹，上面进入了/usr/local/rabbitmq-c-0.9.0/lib 目录，查看一下发现/usr/local/rabbitmq-c-0.9.0/没有lib，但有个lib64位。
+```shell
+cp -R /usr/local/rabbitmq-c-0.9.0/lib64/ /usr/local/rabbitmq-c-0.9.0/lib
+```
+
+* 安装 mongodb 扩展
+```shell
+wget https://pecl.php.net/get/mongodb-1.7.4.tgz
+tar zxvf mongodb-1.7.4.tgz && cd mongodb-1.7.4 
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config 
+make && make install
+
+vim /etc/php.ini
+# add
+extension=mongodb.so
+```
+
+安装 composer 
+```shell
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php 
+php -r "unlink('composer-setup.php');"
+
+mv composer.phar /usr/local/bin/composer
+
+
+
+# 设置全局阿里云镜像
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+
+#恢复到packagist官方源命令
+composer config -g --unset repos.packagist
+
+
+# 更新
+composer selfupdate
+```
