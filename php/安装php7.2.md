@@ -84,8 +84,26 @@ vim /etc/php.ini
 # add
 extension=redis.so
 ```
+* 安装 kafka 扩展
+```shell
+wget https://pecl.php.net/get/rdkafka-4.0.2.tgz
+tar zxvf rdkafka-4.0.2.tgz && cd rdkafka-4.0.2/
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config 
+make && make install
+vim /etc/php.ini
+# add
+extension=rdkafka.so
+```
+错误信息：
+configure: error: Please reinstall the rdkafka distribution
 
-
+```
+ git clone https://github.com/edenhill/librdkafka.git
+cd librdkafka
+./configure
+make && make install
+```
 * 安装 amqp 扩展
 ```shell
 wget https://pecl.php.net/get/amqp-1.8.0.tgz
@@ -109,6 +127,8 @@ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/rabbitmq-c-0.9.0
 make && make install
 cp -R /usr/local/rabbitmq-c-0.9.0/lib64 /usr/local/rabbitmq-c-0.9.0/lib
 ```
+
+
 
 注意：
 发现点蛛丝马迹，上面进入了/usr/local/rabbitmq-c-0.9.0/lib 目录，查看一下发现/usr/local/rabbitmq-c-0.9.0/没有lib，但有个lib64位。
