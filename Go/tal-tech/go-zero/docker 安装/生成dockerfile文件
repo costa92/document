@@ -1,0 +1,24 @@
+# 生成dockerfile 文件
+
+1、生成dockerfile 在 api目录执行 
+
+```sh
+goctl docker -go shorturl.gosh
+```
+
+2、再到根目录生成镜像(shorturl 目录执行执行生镜像)
+
+```sh
+docker build -t shorturl:v1 -f api/Dockerfile .
+```
+
+3、运行镜像
+
+```sh
+ docker run --rm -it -p 8888:8888 shorturl:v1
+```
+
+
+
+## 注意：
+
