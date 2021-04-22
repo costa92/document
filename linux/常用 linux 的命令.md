@@ -186,3 +186,14 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 ```bash
 sudo route del -net 10.100.122.64 netmask  255.255.255.192 gw 192.168.11.132
 ```
+
+
+
+liunx 查看环境变量：
+
+```
+printenv
+```
+
+
+
