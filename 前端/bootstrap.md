@@ -644,17 +644,21 @@ tr、th、td 样式
 
 基本的表单结构是 Boostrap 自带的，个别的表单控制件自动接收一些全局样式，下面列出了创建基本表的步骤
 
+```html
 1.向父 <form> 元素添加 role="form"
 
 2.把标签和控制件放在一个带有class.form-group 的 <div> 中, 这是获取最佳距所必须的
 
 3.向所有的文本元素<input>、<textarea> 和 <select> 添加 class="form-control"
+```
 
-#### 水平表单：
+### 水平表单：
 
 同一行显示  form-horizontal
 
 配合 Bootstrap 框架的网格系统
+
+代码：
 
 ```html
 <form action="" class="form-horizontal">
