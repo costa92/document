@@ -149,22 +149,6 @@ vim /etc/php.ini
 extension=mongodb.so
 ```
 
-
-```shell
-# 安装依赖包
-yum install libmcrypt libmcrypt-devel mcrypt mhash
-
- wget https://pecl.php.net/get/mcrypt-1.0.4.tgz
- tar zxvf mcrypt-1.0.4.tgz && cd mcrypt-1.0.4
- /usr/local/php/bin/phpize
- ./configure --with-php-config=/usr/local/php/bin/php-config
-
-make && make install
-vim /etc/php.ini
-# add
-extension=mcrypt.so
-```
-
 安装 composer 
 ```shell
 php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
