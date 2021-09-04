@@ -15,4 +15,7 @@ swoftcli run -c http:start -b bin/swoft
 
 ```
 ps -ef|grep swoft|grep -v grep|awk '{print $2}'|xargs kill -9
+
+lsof -i:18014|grep -v PID|awk '{print $2}'|xargs kill -9
 ```
+
