@@ -27,6 +27,8 @@ git rebase dev
 解决:
 
 ```sh 
-git pull origin master -- rebase
+git pull origin master --rebase
+
+git pull origin development --rebase
 ```
 
