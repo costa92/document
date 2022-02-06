@@ -10,3 +10,4 @@
    # 生产yaml内容并导出到文件中
    kubectl create deployment nginx --image=nginx  --dry-run=client -oyaml > nginx-dp.yaml
 ```
+

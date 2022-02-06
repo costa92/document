@@ -30,5 +30,7 @@ git rebase dev
 git pull origin master --rebase
 
 git pull origin development --rebase
+
+git pull origin test --rebase
 ```
 

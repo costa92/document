@@ -296,8 +296,15 @@ or
   目前，我认为除了基本的CURD外，其他的代码均属于业务型代码，这个我觉得开发人员根据业务需要进行编写更好。
   
   
-  ```go
+```go
   goctl model mysql datasource -url="root:dg123456@tcp(192.168.11.143:3306)/dg_user_info" -table="tb_home_label"  -dir="model" -style goZero
 ```
 
 参考：https://github.com/zeromicro/go-zero/blob/master/tools/goctl/config/readme.md
+
+
+## 文件生成代码命令
+```sh
+goctl api go -api grid_address.api -dir . -style goZero 
+
+```
