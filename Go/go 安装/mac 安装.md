@@ -18,3 +18,13 @@ cd src
 
 ## 工具安装
 
+
+### 修改环境变量
+
+修/etc/paths.d目录
+```sh
+cd /etc/paths.d && cat go
+
+# /usr/local/go/bin
+/usr/local/go17/bin
+```

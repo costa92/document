@@ -34,3 +34,17 @@ git pull origin development --rebase
 git pull origin test --rebase
 ```
 
+**注意** 修改冲突代码
+
+在提交代码
+
+```sh
+git push origin HEAD:develop     // develop 是分支
+```
+
+
+在冲突解决完毕并且提交代码后，执行下面的命令：
+```sh
+// 在终端也会有需要执行这个命令的提示
+git rebase --continue
+```

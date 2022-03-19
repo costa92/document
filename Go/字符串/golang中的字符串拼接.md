@@ -58,3 +58,96 @@ s3 := build.String()
 ```
 结论
 一般对于少量的字符串拼接可以直接用+来连接，不过最好的方法还是Builder。
+
+```go
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"math/rand"
+	"strings"
+)
+
+const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+// randomString 随机获取字符串
+func randomString(n int) string {
+	b := make([]byte, n)
+	for i := range b {
+		b[i] = letterBytes[rand.Intn(len(letterBytes))]
+	}
+	return string(b)
+}
+
+// plusConcat 使用加
+func plusConcat(n int, str string) string {
+	s := ""
+	for i := 0; i < n; i++ {
+		s += str
+	}
+
+	return s
+}
+
+// sprintfConcat 使用 fmt.Sprintf
+func sprintfConcat(n int, str string) string {
+	s := ""
+	for i := 0; i < n; i++ {
+		s = fmt.Sprintf("%s%s", s, str)
+	}
+	return s
+}
+
+// builderConcat 使用 strings.Builder
+func builderConcat(n int, str string) string {
+	var builder strings.Builder
+	builder.Grow(n * len(str))
+	for i := 0; i < n; i++ {
+		builder.WriteString(str)
+	}
+	return builder.String()
+}
+
+// bufferConcat 使用 bytes.Buffer
+func bufferConcat(n int, s string) string {
+	buf := new(bytes.Buffer)
+	for i := 0; i < n; i++ {
+		buf.WriteString(s)
+	}
+	return buf.String()
+}
+
+// 使用 []byte
+func byteConcat(n int, str string) string {
+	buf := make([]byte, 0)
+	for i := 0; i < n; i++ {
+		buf = append(buf, str...)
+	}
+	return string(buf)
+}
+
+func preByteConcat(n int, str string) string {
+	buf := make([]byte, 0, n*len(str))
+	for i := 0; i < n; i++ {
+		buf = append(buf ,str...)
+	}
+
+	return string(buf)
+}
+
+
+
+func main() {
+	str := randomString(4)
+
+	//str = plusConcat(3,str)
+	//str = sprintfConcat(3,str)
+	//str = builderConcat(3, str)
+	//str = bufferConcat(3, str)
+	//str = byteConcat(3, str)
+	str = preByteConcat(3, str)
+	fmt.Println(str)
+}
+
+```
