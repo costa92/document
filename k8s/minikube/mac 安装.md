@@ -28,6 +28,26 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin
 **--iso-url** 修改镜像的为阿里云
 **--registry-mirror** docker镜像为阿里云的镜像地址
  
+**注意:**  如果没有安装docker的话，可以是使用 hyperkit
+
+安装如下
+
+```sh
+brew install hyperkit
+brew install docker-machine-driver-hyperkit
+minikube start --driver=hyperkit
+```
+
+启动命令
+
+ ```sh
+ minikube start --image-mirror-country cn \
+    --driver=hyperkit \
+    --iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.6.0.iso \
+    --registry-mirror=https://xxxx.mirror.aliyuncs.com
+    
+ ```
+ 
  3. 查看是否安装成功
  ```sh
  kubectl get po -A
@@ -44,5 +64,76 @@ minikube addons enable ingress
 ```
 
 
+## 测试案例
 
-  
+启动 minikube
+
+```sh
+minikube start
+```
+
+查看 dashboard UI
+
+```sh
+minikube dashboard
+```
+
+
+
+创建 deployment
+
+```sh
+kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+```
+**注意** k8s.gcr.io 国内无法访问 可以改成 registry.cn-hangzhou.aliyuncs.com/google_containers
+
+```sh
+kubectl create deployment hello-minikube --image=registry.cn-hangzhou.aliyuncs.com/google_containers/echoserver:1.4
+```
+
+查看状态
+
+```sh
+kubectl get deploy
+kubectl get pod
+kubectl describe pod
+```
+
+创建 service
+```sh
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+```
+
+查看 service 状态
+
+```sh
+kubectl get service
+```
+
+自动打开浏览器访问 service
+
+```sh
+minikube service hello-minikube
+```
+
+清除 service
+
+```sh
+kubectl delete service hello-minikube
+```
+
+清除 deployment
+```sh
+kubectl delete deployment hello-minikube
+```
+
+停止 minikube 虚拟机
+```sh
+minikube stop
+```
+
+删除虚拟机 VM
+
+```sh
+minikube delete
+```
