@@ -233,3 +233,14 @@ composer config -g --unset repos.packagist
 # 更新
 composer selfupdate
 ```
+
+
+# 安装扩展gpc
+
+```bash
+wget https://pecl.php.net/get/grpc-1.41.0.tgz
+tar zxvf grpc-1.41.0.tgz && cd grpc-1.41.0
+ /usr/local/php/bin/phpize
+  ./configure --with-php-config=/usr/local/php/bin/php-config
+make && make install
+```
