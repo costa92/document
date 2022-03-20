@@ -137,3 +137,10 @@ minikube stop
 ```sh
 minikube delete
 ```
+
+查看minikube ip
+```sh
+minikube ip
+```
+
+参考：https://minikube.sigs.k8s.io/docs/

@@ -27,7 +27,7 @@ type iface struct {  // 16 bytes
 }
 ```
 
-![iface 的结构 ](https://file.longqiuhong.com/markdown/eface-20210515192921770.png)
+![itab 结构类型](https://file.longqiuhong.com/markdown/eface-20210515192921770.png )
 
 itab 的构造体的
 
