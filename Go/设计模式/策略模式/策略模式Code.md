@@ -45,6 +45,7 @@ func encrypt(data []byte) ([]byte, error) {
 	return data, nil
 }
 
+
 ```
 
 测试：
@@ -69,3 +70,4 @@ func getData()([]byte,bool)  {
 	return []byte("test data 222"),true
 }
 ```
+
