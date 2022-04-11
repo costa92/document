@@ -182,3 +182,6 @@ curr, err := collec.Aggregate(ctx, aggregate)
 	curr, err := collec.Aggregate(ctx, aggregate)
 ```
 
+
+
+参考  [github](https://github.com/mongodb/mongo-go-driver/blob/v1.9.0/examples/documentation_examples/examples.go#L2112) 案例
