@@ -28,3 +28,4 @@ cd /etc/paths.d && cat go
 # /usr/local/go/bin
 /usr/local/go17/bin
 ```
+
