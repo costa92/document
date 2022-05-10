@@ -229,6 +229,175 @@ cur.Close(context.TODO())
 fmt.Printf("Found multiple documents (array of pointers): %#v\n", results)
 ```
 
+### 简单条件
+
+```go
+//单个条件 =
+func equal() {
+	query := bson.M{"name": "Python程序设计开发宝典"}
+	searchAll(query)
+}
+
+//单个条件 >
+func gt() {
+	query := bson.M{"price": bson.M{"$gt": 40.0}}
+	searchAll(query)
+}
+
+//单个条件 <
+func lt() {
+	query := bson.M{"price": bson.M{"$lt": 40.0}}
+	searchAll(query)
+}
+
+//单个条件 >=
+func gte() {
+	query := bson.M{"price": bson.M{"$gte": 45}}
+	searchAll(query)
+}
+
+//单个条件 <=
+func lte() {
+	query := bson.M{"price": bson.M{"$lte": 36}}
+	searchAll(query)
+}
+
+//单个条件 !=
+func ne() {
+	query := bson.M{"press": bson.M{"$ne": "清华大学出版社"}}
+	searchAll(query)
+}
+```
+
+### 多合条件查询
+
+```go
+/ and
+//select * from table where price<=50 and press='清华大学出版社'
+func and() {
+	query := bson.M{"price": bson.M{"$lte": 50}, "press": "清华大学出版社"}
+	searchAll(query)
+}
+
+// or
+//select * from table where press='高等教育出版社' or press='清华大学出版社'
+func or() {
+	query := bson.M{"$or": []bson.M{bson.M{"press": "高等教育出版社"}, bson.M{"name": "Python程序设计开发宝典"}}}
+	searchAll(query)
+}
+
+// not
+// not条件只能用在正则表达式中
+func not() {
+	query := bson.M{"press": bson.M{"$not": bson.RegEx{Pattern: "^清华", Options: "i"}}}
+	searchAll(query)
+}
+
+
+// 单个key的or查询可以使用 in 或 nin
+func in() {
+	query := bson.M{"press": bson.M{"$in": []string{"清华大学出版社", "机械工业出版社"}}}
+	searchAll(query)
+}
+
+func nin() {
+	query := bson.M{"press": bson.M{"$nin": []string{"清华大学出版社", "机械工业出版社"}}}
+	searchAll(query)
+}
+```
+
+### 正则查询，字符串模糊查询
+
+```go
+//正则查询
+//$regex操作符的使用
+//
+//$regex操作符中的option选项可以改变正则匹配的默认行为，它包括i, m, x以及s四个选项，其含义如下
+//
+//i 忽略大小写，{<field>{$regex/pattern/i}}，设置i选项后，模式中的字母会进行大小写不敏感匹配。
+//m 多行匹配模式，{<field>{$regex/pattern/,$options:'m'}，m选项会更改^和$元字符的默认行为，分别使用与行的开头和结尾匹配，而不是与输入字符串的开头和结尾匹配。
+//x 忽略非转义的空白字符，{<field>:{$regex:/pattern/,$options:'m'}，设置x选项后，正则表达式中的非转义的空白字符将被忽略，同时井号(#)被解释为注释的开头注，只能显式位于option选项中。
+//s 单行匹配模式{<field>:{$regex:/pattern/,$options:'s'}，设置s选项后，会改变模式中的点号(.)元字符的默认行为，它会匹配所有字符，包括换行符(\n)，只能显式位于option选项中。
+//
+//使用$regex操作符时，需要注意下面几个问题:
+//
+//i，m，x，s可以组合使用，例如:{name:{$regex:/j*k/,$options:"si"}}
+//在设置索引的字段上进行正则匹配可以提高查询速度，而且当正则表达式使用的是前缀表达式时，查询速度会进一步提高，例如:{name:{$regex: /^joe/}
+
+//字符串模糊查询  开头包含
+func beginWith() {
+	query := bson.M{"name": bson.M{"$regex": bson.RegEx{Pattern: "^高等", Options: "i"}}}
+	searchAll(query)
+}
+
+//模糊查询 包含
+func contains() {
+	//query := bson.M{"name": bson.M{"$regex": "开发", "$options": "$i"}}
+	query := bson.M{"name": bson.M{"$regex": bson.RegEx{Pattern: "开发", Options: "i"}}}
+	searchAll(query)
+}
+
+//模糊查询 结尾包含
+func endWith() {
+	query := bson.M{"name": bson.M{"$regex": bson.RegEx{Pattern: "指南$", Options: "i"}}}
+	searchAll(query)
+}
+
+```
+
+### 数组查询
+
+```go
+//数组查询，数组中的元素可能是单个值数据，也可能是子文档
+//针对单个值数据
+//满足数组中单个值
+func arrayMatchSingle() {
+	query := bson.M{"tags": "编程"}
+	searchAll(query)
+}
+
+//同时满足所有条件，不要求顺序
+func arrayMatchAll() {
+	query := bson.M{"tags": bson.M{"$all": []string{"程序设计", "编程", "python"}}}
+	searchAll(query)
+}
+
+//查询特定长度
+func arrayMatchSize() {
+	query := bson.M{"tags": bson.M{"$size": 4}}
+	searchAll(query)
+}
+
+//满足特定索引下条件
+//数组索引从0开始，我们匹配第二项就用tags.1作为键
+func arrayMatchIndex() {
+	query := bson.M{"tags.1": "编程"}
+	searchAll(query)
+}
+
+//精确查找，数量，顺序都要满足
+func arrayMatch() {
+	query := bson.M{"tags": []string{"数学", "大学数学", "高等数学"}}
+	searchAll(query)
+}
+
+//针对与数组中的子文档
+//满足单个价值
+func subDocMatchSingle() {
+	query := bson.M{"author.name": "纪涵"}
+	searchAll(query)
+}
+
+//elementMath
+func subDocMatchElement() {
+	query := bson.M{"author": bson.M{"$elemMatch": bson.M{"name": "谢希仁", "sex": "男"}}}
+	searchAll(query)
+}
+
+```
+
+
+
 ### 分页查询
 
 使用Skip函数和Limit函数
