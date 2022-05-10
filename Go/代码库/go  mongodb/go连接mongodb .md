@@ -181,7 +181,7 @@ fmt.Printf("Matched %v documents and updated %v documents.\n", updateResult.Matc
 
 我们使用上面定义过的那个filter来查找姓名为’小兰’的文档。
 
-```gi
+```go
 // 创建一个Student变量用来接收查询的结果
 var result Student
 err = collection.FindOne(context.TODO(), filter).Decode(&result)
@@ -228,6 +228,41 @@ if err := cur.Err(); err != nil {
 cur.Close(context.TODO())
 fmt.Printf("Found multiple documents (array of pointers): %#v\n", results)
 ```
+
+### 分页查询
+
+使用Skip函数和Limit函数
+
+```go
+func (q *Query) Skip(n int) *Query
+func (q *Query) Limit(n int) *Query
+```
+
+```go
+func findPage() {
+    db := getDB()
+ 
+    c := db.C("user")
+ 
+    type User struct {
+        Id   bson.ObjectId `bson:"_id,omitempty"`
+        Name string        "bson:`name`"
+        Age  int           "bson:`age`"
+    }
+    var users []User
+    // 表示从偏移位置为2的地方开始取两条记录
+    err := c.Find(nil).Sort("-age").Skip(2).Limit(2).All(&users)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(users)
+    // output:
+    // [{ObjectIdHex("56fdce98189df8759fd61e5d") Anny 20} ...]
+    // ...
+}
+```
+
+
 
 #### 删除文档
 
