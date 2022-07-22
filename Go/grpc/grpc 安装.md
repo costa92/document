@@ -33,7 +33,15 @@ protoc: error while loading shared libraries: libprotobuf.so.15: cannot open sha
 
 **Protoc Plugin**
 
+安装 protoc-gen-go 插件
+
 ```sh
-go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u github.com/golang/protobuf/protoc-gen-go@latest
+或
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 ```
 
+安装 protoc-gen-go-grpc 插件：用于生成 xx_grpc.pb.go 文件
+```sh
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
