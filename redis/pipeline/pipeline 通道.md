@@ -19,7 +19,7 @@ Redis 是一个基于 TCP 协议的 CS 架构的内存数据库，所有的操�
 为了提高redis的读写能力，所以pipeline 的出现，对于多个命令执行，不再同步等待每个命令返回结果， 会在统一一个时间点获取Response。 这样就解决多个 RTT的问题 
 
 Redis 客户端-服务端的一次完整的网络请求来回
-![](media/16580644964025.jpg)
+![](https://file.longqiuhong.com/markdown/16580644964025.jpg)
 
 
 1. 客户端调用 write 将数据写入操作系统内核(kernel) 为socket 连接分配的发送缓存区(send buffer)
@@ -44,5 +44,4 @@ Redis 客户端-服务端的一次完整的网络请求来回
 
 Pipeline 请求模式
 ![Pipeline](media/16580637224908.jpg)
-
 
