@@ -26,3 +26,10 @@ vim 配置参考:https://www.niuiic.top/2022/05/23/vim-column-statement/
 nvim树的配置:
 
 https://github.com/preservim/nerdtree
+
+coc  **安装快速生成代码插件**
+
+```sh
+:CocInstall coc-snippets
+```
+

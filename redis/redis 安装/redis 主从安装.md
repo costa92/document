@@ -22,7 +22,7 @@
 ```bash
 tar -zxf redis-5.0.9.tar.gz && cd redis-5.0.9/
 ```
-    
+
 **编译安装：**
 
 ```bash   
