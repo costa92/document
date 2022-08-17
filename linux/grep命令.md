@@ -25,4 +25,8 @@ ps -ef | grep nsq | grep -v grep | awk '{print $2}' | xargs kill #杀掉所有ns
 
 
 
+
+
+
+
 https://gregable.com/2010/09/why-you-should-know-just-little-awk.html

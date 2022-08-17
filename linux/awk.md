@@ -274,3 +274,7 @@ NR  大于  1 表示从第二行开始
 [awk 入门教程](https://www.ruanyifeng.com/blog/2018/11/awk.html)
 
 [30 Examples for Awk Command in Text Processing](https://likegeeks.com/awk-command/)
+
+
+
+[查找grep、提取awk、sed、重定向](https://zhuanlan.zhihu.com/p/34946663)
