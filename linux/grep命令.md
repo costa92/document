@@ -25,6 +25,20 @@ ps -ef | grep nsq | grep -v grep | awk '{print $2}' | xargs kill #杀掉所有ns
 
 
 
+###  反向匹配
+
+```sh
+$ grep -v
+```
+
+###  输出上下文
+
+需要输出与匹配行相邻的行，可以通过 *-C* 参数实现。同时输出匹配行前后 *10* 行：
+
+```sh
+$ grep -C 10
+```
+
 
 
 

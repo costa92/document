@@ -24,3 +24,5 @@
    
 
    
+
+![image-20221027114547715](/home/hellotalk/Documents/workfile/document/linux/tmux 分屏.assets/image-20221027114547715.png)
