@@ -1,5 +1,7 @@
 # linux 清理空间
 
+处理 linux 日志文件与 docker 未使用的 docker镜像
+
 ### 查看磁盘使用情况
 
 * **df 命令**

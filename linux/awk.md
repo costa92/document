@@ -9,9 +9,6 @@ echo 'this is a test' |awk '{print $3}'
 ```
 
 
-
-
-
 **替换 字符串中一个**
 
 ```sh
@@ -23,8 +20,6 @@ echo 'this is a test' |awk '{print $3}'
 ```sh
 Hello Adam
 ```
-
-
 
 
 
@@ -268,9 +263,6 @@ NR  大于  1 表示从第二行开始
 参考链接：
 
 [Awk Example](https://gregable.com/2010/09/why-you-should-know-just-little-awk.html)
-
 [菜鸟](https://www.runoob.com/linux/linux-comm-awk.html)
-
 [awk 入门教程](https://www.ruanyifeng.com/blog/2018/11/awk.html)
-
 [30 Examples for Awk Command in Text Processing](https://likegeeks.com/awk-command/)

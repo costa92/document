@@ -1,7 +1,10 @@
 # elastic
 
+elastic 是分布式搜索与分析引擎
+
 ### 版本
 
+安装v7版本
 ```bash
 go get github.com/olivere/elastic/v7
 ```

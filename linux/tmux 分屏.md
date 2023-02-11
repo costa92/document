@@ -1,14 +1,10 @@
 # 使用 tmux 分屏（既可以左右分屏，也可以上下分屏）
 
-
-
 1. 安装
-
+    
    ```shell
    sudo apt-get install tmux
    ```
-
-   
 
 2.  使用工具
 
