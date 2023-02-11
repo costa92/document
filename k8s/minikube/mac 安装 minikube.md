@@ -92,6 +92,20 @@ minikube start
 minikube dashboard
 ```
 
+设置内存大小 默认是MB  
+
+```sh
+minikube config set memory 4096 // 设置4g
+minikube config get memory   // 查看
+```
+
+设置CPU 数量
+
+```sh
+minikube config set cpus 4 // 设置4个
+minikube config get cpus   // 查看
+```
+
 
 
 创建 deployment
