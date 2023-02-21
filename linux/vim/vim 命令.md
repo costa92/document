@@ -91,6 +91,3 @@ autocmd BufNewFile *.cpp exec ":call SetTitle()"
 "自动将光标定位到末尾"
 autocmd BufNewFile * normal G
 ```
-
-
-

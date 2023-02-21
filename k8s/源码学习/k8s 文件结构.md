@@ -13,30 +13,102 @@ example：使用例子
 Godeps：项目依赖的Go的第三方包，比如docker客户端sdk，rest等
 hack：工具箱，各种编译，构建，校验的脚本都在这。
 
-/cmd/kube-scheduler
-├── app
-│ ├── BUILD
-│ ├── server.go //schedule初始化以及运行启动函数
-├── BUILD
-├── OWNERS
-├── scheduler.go //schedule main函数
-/pkg
-├── plugin/pkg/admission
-├── plugin/pkg/auth //相关认证
-├── plugin/pkg/scheduler //schedule主要逻辑，包含预选优选算法、测量等
-├── plugin/pkg/scheduler/algorithm //schedule预选优选算法
-├── ...
-├── plugin/pkg/scheduler/schedulercache //schedule缓存，便于业务逻辑
-├── plugin/pkg/scheduler/metrics// 测量相关
-├── BUILD
-├── testutil.go
-├── OWNERS
-├── scheduler.go // scheduler的代码逻辑入口，其中scheduleOne函数就在里面
-├── scheduler_test.go
+k8s.io/kubernetes/plugin/
+.
+├── cmd
+│   └── kube-scheduler          // kube-scheduler command的相关代码
+│       ├── app                 // kube-scheduler app的启动
+│       │   ├── options         
+│       │   │   └── options.go  // 封装SchedulerServer对象和AddFlags方法
+│       │   └── server.go       // 定义SchedulerServer的config封装和Run方法
+│       └── scheduler.go        // kube-scheduler main方法入口
+└── pkg
+    ├── scheduler               // scheduler后端核心代码
+    │   ├── algorithm
+    │   │   ├── doc.go
+    │   │   ├── listers.go      // 定义NodeLister和PodLister等Interface
+    │   │   ├── predicates      // 定义kubernetes自带的Predicates Policies的Function实现
+    │   │   │   ├── error.go
+    │   │   │   ├── metadata.go
+    │   │   │   ├── predicates.go   // 自带Predicates Policies的主要实现
+    │   │   │   ├── predicates_test.go
+    │   │   │   ├── utils.go
+    │   │   │   └── utils_test.go
+    │   │   ├── priorities      // 定义kubernetes自带的Priorities Policies的Function实现
+    │   │   │   ├── balanced_resource_allocation.go    // defaultProvider - BalancedResourceAllocation
+    │   │   │   ├── balanced_resource_allocation_test.go
+    │   │   │   ├── image_locality.go    // defaultProvider - ImageLocalityPriority
+    │   │   │   ├── image_locality_test.go
+    │   │   │   ├── interpod_affinity.go   // defaultProvider - InterPodAffinityPriority
+    │   │   │   ├── interpod_affinity_test.go
+    │   │   │   ├── least_requested.go  // defaultProvider - LeastRequestedPriority
+    │   │   │   ├── least_requested_test.go 
+    │   │   │   ├── metadata.go         // priorityMetadata定义
+    │   │   │   ├── most_requested.go   // defaultProvider - MostRequestedPriority
+    │   │   │   ├── most_requested_test.go
+    │   │   │   ├── node_affinity.go    // defaultProvider - NodeAffinityPriority
+    │   │   │   ├── node_affinity_test.go
+    │   │   │   ├── node_label.go       // 当policy.Argument.LabelPreference != nil时，会注册该Policy
+    │   │   │   ├── node_label_test.go
+    │   │   │   ├── node_prefer_avoid_pods.go  // defaultProvider - NodePreferAvoidPodsPriority 
+    │   │   │   ├── node_prefer_avoid_pods_test.go
+    │   │   │   ├── selector_spreading.go     // defaultProvider - SelectorSpreadPriority
+    │   │   │   ├── selector_spreading_test.go
+    │   │   │   ├── taint_toleration.go      // defaultProvider - TaintTolerationPriority
+    │   │   │   ├── taint_toleration_test.go
+    │   │   │   ├── test_util.go
+    │   │   │   └── util                // 工具类
+    │   │   │       ├── non_zero.go
+    │   │   │       ├── topologies.go
+    │   │   │       └── util.go
+    │   │   ├── scheduler_interface.go    // 定义SchedulerExtender和ScheduleAlgorithm Interface
+    │   │   ├── scheduler_interface_test.go
+    │   │   └── types.go               // 定义了Predicates和Priorities Algorithm要实现的方法类型(FitPredicate, PriorityMapFunction)
+    │   ├── algorithmprovider          // algorithm-provider参数配置的项
+    │   │   ├── defaults    
+    │   │   │   ├── compatibility_test.go
+    │   │   │   └── defaults.go         // "DefaultProvider"的实现
+    │   │   ├── plugins.go            // 空，预留自定义
+    │   │   └── plugins_test.go
+    │   ├── api                       // 定义Scheduelr API接口和对象，用于SchedulerExtender处理来自HTTPExtender的请求。
+    │   │   ├── latest
+    │   │   │   └── latest.go
+    │   │   ├── register.go
+    │   │   ├── types.go              // 定义Policy, PredicatePolicy,PriorityPolicy等
+    │   │   ├── v1
+    │   │   │   ├── register.go
+    │   │   │   └── types.go
+    │   │   └── validation
+    │   │       ├── validation.go    // 验证Policy的定义是否合法
+    │   │       └── validation_test.go
+    │   ├── equivalence_cache.go    // 
+    │   ├── extender.go               // 定义HTTPExtender的新建以及对应的Filter和Prioritize方法来干预预选和优选
+    │   ├── extender_test.go
+    │   ├── factory                    // 根据配置的Policies注册和匹配到对应的预选(FitPredicateFactory)和优选(PriorityFunctionFactory2)函数
+    │   │   ├── factory.go             // 核心是定义ConfigFactory来工具配置完成scheduler的封装函数，最关键的CreateFromConfig和CreateFromKeys
+    │   │   ├── factory_test.go
+    │   │   ├── plugins.go             // 核心是定义注册自定义预选和优选Policy的方法
+    │   │   └── plugins_test.go
+    │   ├── generic_scheduler.go        // 定义genericScheduler，其Schedule(...)方法作为调度执行的真正开始的地方
+    │   ├── generic_scheduler_test.go
+    │   ├── metrics                    // 支持注册metrics到Prometheus
+    │   │   └── metrics.go
+    │   ├── scheduler.go                // 定义Scheduler及Run()，核心的scheduleOne()方法也在此，scheduleOne()一个完成的调度流程，包括或许待调度Pod、调度、Bind等
+    │   ├── scheduler_test.go
+    │   ├── schedulercache       
+    │   │   ├── cache.go               // 定义schedulerCache对Pod，Node，以及Bind的CURD，以及超时维护等工作
+    │   │   ├── cache_test.go
+    │   │   ├── interface.go           // schedulerCache要实现的Interface
+    │   │   ├── node_info.go          // 定义NodeInfo及其相关Opertation
+    │   │   └── util.go
+    │   └── testing
+    │       ├── fake_cache.go
+    │       └── pods_to_cache.go
 ```
 
 
 参考:https://github.com/daniel-hutao/k8s-source-code-analysis
+
 
 
 
@@ -59,4 +131,3 @@ vendor/：包含所有依赖项的代码，其中每个依赖项都被拷贝到�
 
 除此之外，还有其他一些目录和文件，如 test/ 用于单元测试和集成测试代码， docs/ 用于文档等。总的来说，Kubernetes 源代码的目录结构非常清晰，易于理解和使用。
 ```
-
