@@ -260,6 +260,22 @@ NR  大于  1 表示从第二行开始
 
 
 
+## 统计文件中的数量
+
+查询 file 文件中 haha 的数量
+
+```sh
+awk -v RS='haha' 'END {print --NR}' file  
+```
+
+或者使用 grep 
+
+```sh
+grep -o 'haha' file | wc -l
+```
+
+
+
 参考链接：
 
 [Awk Example](https://gregable.com/2010/09/why-you-should-know-just-little-awk.html)

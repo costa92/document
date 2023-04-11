@@ -39,6 +39,14 @@ $ grep -v
 $ grep -C 10
 ```
 
+###  查询文件字符串数量
+
+在 file 文件中含有 haha 数量
+
+```sh
+grep -o 'haha' file | wc -l
+```
+
 
 
 
