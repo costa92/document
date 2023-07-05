@@ -150,7 +150,10 @@ minikube service hello-minikube
 kubectl delete service hello-minikube
 ```
 
-清除 deployment
+清除 deployment  
+
+K8S删除pod，删除之后马上又新建一个pod
+
 ```sh
 kubectl delete deployment hello-minikube
 ```
