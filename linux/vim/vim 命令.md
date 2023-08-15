@@ -91,3 +91,31 @@ autocmd BufNewFile *.cpp exec ":call SetTitle()"
 "自动将光标定位到末尾"
 autocmd BufNewFile * normal G
 ```
+
+# vi 批量加注释/反注释
+
+加注释：
+
+Esc 进入command mode
+
+Ctrl + v 进入VISUAL MODE
+
+j, k移动，选中想要注释的行
+
+大写的I, 即(shift + i)
+
+输入# 或//
+
+Esc 2次，完成。
+
+------
+
+反注释：
+
+Esc 进入command mode
+
+Ctrl + v 进入VISUAL MODE
+
+j, k移动，选中想要注释的行
+
+d, 删除， 完成。

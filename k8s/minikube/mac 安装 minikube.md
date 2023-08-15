@@ -176,3 +176,32 @@ minikube ip
 
 参考：https://minikube.sigs.k8s.io/docs/
 
+导入镜像到 minikube
+
+```sh
+minikube image load <IMAGE_NAME>
+
+# Example
+minikube image load in-cluster:v1
+```
+
+查导入镜像帮助命令
+
+```sh
+minikube image -h
+```
+
+结果：
+
+```sh
+Available Commands:
+  build       Build a container image in minikube
+  load        Load a image into minikube
+  ls          List images
+  pull        Pull images
+  push        Push images
+  rm          Remove one or more images
+  save        Save a image from minikube
+  tag         Tag images
+```
+

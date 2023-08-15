@@ -162,3 +162,8 @@ spec:
         - containerPort: 5000
 ```
 
+
+
+参考文献：
+
+[微信公众](https://mp.weixin.qq.com/s?__biz=MzI0MDE3MjAzMg==&mid=2648393986&idx=1&sn=69950039d43cf1c692abe6ee28409160&chksm=f131046dc6468d7b75e5b6c0bfea194654e1e4c5d041e830d8474e57f5f43e8e358bebc24ac3&cur_album_id=2123527375761014785&scene=189#wechat_redirect)

@@ -33,13 +33,14 @@ spec:
     command: 执行sh 文件的时候，不需要 加 -c 来处理：
     错误写法
     
-    ```yaml
-    command: ["/bin/sh","-c","/app/etc/cance.sh"]
-    ```
-    
-    正确处理：
-    
-    ```yaml
-     command: ["/bin/sh","/app/etc/cance.sh"]
-    ```    
-    
+~~~z
+```yaml
+command: ["/bin/sh","-c","/app/etc/cance.sh"]
+```
+
+正确处理：
+
+```yaml
+ command: ["/bin/sh","/app/etc/cance.sh"]
+```    
+~~~
