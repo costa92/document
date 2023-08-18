@@ -205,3 +205,6 @@ Available Commands:
   tag         Tag images
 ```
 
+> 注意：k8s 1.24版本之后不在使用docker ，而是使用containerd。kubernetes支持任何符合CRI标准的容器运行时。在1.23版本之前，常用的容器运行时有三种：docker、containerd、cri-o.
+
+![img](https://file.longqiuhong.com/uploads/picgo/e851d8130487a9e59ae1925baec9d7a2c34bd7.png)
