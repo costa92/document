@@ -46,4 +46,16 @@
       1. [github](https://github.com/kubeshark/kubeshark)
       2. [K8S 抓包工具 Kubeshark 简介](https://longhua.io/2023/02/03/introduction-to-kubeshark/)
    
+6. k8s 扩展
 
+   1. [krew](https://krew.sigs.k8s.io/docs/user-guide/quickstart/)
+
+7. 构造镜像
+
+   1. [podman](https://podman.io/)
+
+      1. [使用-podman-构建镜像](https://imroc.cc/kubernetes/trick/images/podman.html#%E4%BD%BF%E7%94%A8-podman-%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F)
+
+   2. [skopeo](https://github.com/containers/skopeo/blob/main/install.md)
+      1. [使用-skopeo-批量同步-helm-chart-依赖镜像](https://imroc.cc/kubernetes/trick/images/sync-images-with-skopeo.html#skopeo-是什么)
+   
