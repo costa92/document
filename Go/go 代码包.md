@@ -21,4 +21,10 @@
 1. [sentry-go](http://github.com/getsentry/sentry-go)
 
 ## 压缩包
-1.[compress] github.com/klauspost/compress 
+1.[compress](https://github.com/klauspost/compress)
+
+## 授权 
+1. [jwt-go](github.com/dgrijalva/jwt-go)
+2. [casbin](github.com/casbin/casbin/v2)
+## 验证包
+1. [base64Captcha](github.com/mojocn/base64Captcha)
