@@ -26,5 +26,12 @@
 ## 授权 
 1. [jwt-go](github.com/dgrijalva/jwt-go)
 2. [casbin](github.com/casbin/casbin/v2)
+
 ## 验证包
 1. [base64Captcha](github.com/mojocn/base64Captcha)
+
+## 测试包
+1. [testify](https://github.com/stretchr/testify)
+
+## 文档包
+1.  [go-swagger](https://github.com/swaggo/swag)
