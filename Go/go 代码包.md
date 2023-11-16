@@ -36,3 +36,6 @@
    [docs_zh](https://ke-chain.github.io/ginkgodoc/#%E5%85%A5%E9%97%A8-%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B5%8B%E8%AF%95)
 ## 文档包
 1.  [go-swagger](https://github.com/swaggo/swag)
+
+## 随机包
+1. [gofuzz](github.com/google/gofuzz)
