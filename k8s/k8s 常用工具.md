@@ -58,4 +58,3 @@
 
    2. [skopeo](https://github.com/containers/skopeo/blob/main/install.md)
       1. [使用-skopeo-批量同步-helm-chart-依赖镜像](https://imroc.cc/kubernetes/trick/images/sync-images-with-skopeo.html#skopeo-是什么)
-   
