@@ -50,6 +50,14 @@
 
    1. [krew](https://krew.sigs.k8s.io/docs/user-guide/quickstart/)
 
+      1. **kube-score** 
+
+         ```sh
+         kubectl krew install score 
+         ```
+
+         
+
 7. 构造镜像
 
    1. [podman](https://podman.io/)
@@ -58,3 +66,4 @@
 
    2. [skopeo](https://github.com/containers/skopeo/blob/main/install.md)
       1. [使用-skopeo-批量同步-helm-chart-依赖镜像](https://imroc.cc/kubernetes/trick/images/sync-images-with-skopeo.html#skopeo-是什么)
+
