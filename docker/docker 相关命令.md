@@ -254,3 +254,59 @@ docker cp [local_path] rabbitmq:/[container_path]/
 ##将主机文件copy至rabbitmq容器，目录重命名为[container_path]（注意与非重命名copy的区别）
 docker cp [local_path] rabbitmq:/[container_path]
 ```
+
+## 4 、查看 Docker 网络
+
+ ###  4.1 查询docker 网络
+
+```sh
+docker network ls  
+
+NETWORK ID     NAME                DRIVER    SCOPE
+edfd446adb47   bridge              bridge    local
+40a3a6581e08   host                host      local
+88db1179ad8c   minikube            bridge    local
+8a1b205483bc   none                null      local
+fc18e852c0e3   workspace_default   bridge    local
+```
+
+### 4.2 删除docker网络
+
+*删除所有没有用的网卡*
+
+```sh
+docker network prune
+```
+
+#### 查看 宿主的ip
+
+```sh
+ip addr show
+```
+
+#### 激活网卡
+
+```sh
+ip link set up eno1
+```
+
+### 4.3 查看创建新的的bridge
+
+```sh
+brctl show  查看并没有创建新的bridge
+
+bridge name     bridge id               STP enabled     interfaces
+br-88db1179ad8c         8000.0242740c2062       no              veth5fcf2e9
+br-fc18e852c0e3         8000.0242db4191c5       no
+docker0         8000.0242a9fb64e1       no              veth0eacc92
+                                                        veth9e8dd8a
+                                                        vethe58a1ff
+```
+
+容器接口直接与主机网卡相连，无需NAT或端口映射	
+
+
+
+## 参考：
+
+[文档](https://blog.csdn.net/qq_46089299/article/details/106575679)
