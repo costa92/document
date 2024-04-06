@@ -4,6 +4,7 @@ linux  安装 golang
 
 ```sh
 ~ ➤ wget https://go.dev/dl/go1.18.darwin-arm64.tar.gz
+wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
 ```
 
 
@@ -11,6 +12,9 @@ linux  安装 golang
 
 ```sh
 sudo tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz go/
+sudo tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz go/
+// 解压到当前目录
+~ ➤ tar -zxvf go1.18.linux-amd64.tar.gz
 ```
 
 修改环境变量：
