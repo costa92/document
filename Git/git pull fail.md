@@ -35,3 +35,9 @@ git config --global pack.windowMemory 2047m
 git config --global http.lowSpeedLimit 0
 git config --global http.lowSpeedTime  999999
 ```
+
+
+### 检测 rsa 使用的情况
+```sh
+ssh -T -ai ~/.ssh/id_rsa git@github.com
+```
