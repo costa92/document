@@ -1,0 +1,150 @@
+{
+  "main": {
+    "id": "0cf6224e6eb04701",
+    "type": "split",
+    "children": [
+      {
+        "id": "6ff0cf51f444804d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "148d525697a22185",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5e255cd64b2dc986",
+    "type": "split",
+    "children": [
+      {
+        "id": "492c7249b24d60e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "68ef689a2985a5c4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3c9d0b6416c88b45",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8781a62a3b2f468e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "55b6141ebf682b16",
+    "type": "split",
+    "children": [
+      {
+        "id": "e36f685275093161",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c3c54c902465f16",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5e598de897f39903",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c83603f5aece2f04",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "516f86e817c3168f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "148d525697a22185",
+  "lastOpenFiles": [
+    "未命名.canvas",
+    "tools/软件使用清单.md",
+    "tools/images/ulaunchec-cursor.png",
+    "推荐工具.md",
+    "tools/images",
+    "linux/vim-go.md",
+    "linux/tools.md"
+  ]
+}
