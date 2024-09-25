@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6ff0cf51f444804d",
+        "id": "e9d8ec8c11123b2e",
         "type": "tabs",
         "children": [
           {
-            "id": "148d525697a22185",
+            "id": "cb09a09aa1672821",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -137,11 +137,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "148d525697a22185",
+  "active": "cb09a09aa1672821",
   "lastOpenFiles": [
+    "Go/go 常用包/golang tools.md",
+    "().md",
     "未命名.canvas",
-    "tools/软件使用清单.md",
     "tools/images/ulaunchec-cursor.png",
+    "tools/软件使用清单.md",
     "推荐工具.md",
     "tools/images",
     "linux/vim-go.md",
