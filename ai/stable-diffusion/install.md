@@ -125,5 +125,7 @@ https://www.liblib.art/
 
 参考:
 [Python conda](https://yfi.moe/post/pyenv-conda-together)
+[# Ubuntu 22.04上安装Anaconda，及 conda 的基础使用](https://blog.csdn.net/JineD/article/details/129507719)
 [Stable-Diffusion的WebUI部署](https://blog.csdn.net/maiya_yayaya/article/details/139519725?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-139519725-blog-135525227.235%5Ev43%5Epc_blog_bottom_relevance_base9&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-139519725-blog-135525227.235%5Ev43%5Epc_blog_bottom_relevance_base9)
 [# AI绘画(Stable Diffusion)喂饭级教程-第2篇(SD大模型详解)](https://blog.csdn.net/WANGJUNAIJIAO/article/details/140264159?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-140264159-blog-141104982.235^v43^pc_blog_bottom_relevance_base9&spm=1001.2101.3001.4242.1&utm_relevant_index=3)
+
