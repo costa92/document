@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e9d8ec8c11123b2e",
+        "id": "531681286cf375a6",
         "type": "tabs",
         "children": [
           {
-            "id": "cb09a09aa1672821",
+            "id": "b5ee0edeaed82381",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "推荐工具.md",
+                "file": "ai/stable-diffusion/install.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "推荐工具.md",
+                "file": "ai/stable-diffusion/install.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "推荐工具.md",
+                "file": "ai/stable-diffusion/install.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "推荐工具.md"
+                "file": "ai/stable-diffusion/install.md"
               }
             }
           }
@@ -145,10 +145,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "cb09a09aa1672821",
+  "active": "b5ee0edeaed82381",
   "lastOpenFiles": [
-    "().md",
+    "ai/stable-diffusion/install.md",
+    "ai/stable-diffusion",
+    "未命名",
+    "ai",
     "推荐工具.md",
+    "().md",
     "Go/go 常用包/golang tools.md",
     "未命名.canvas",
     "tools/images/ulaunchec-cursor.png",
