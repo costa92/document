@@ -107,6 +107,28 @@ stable-diffusion-webui根目录中运行
 ```
 
 
+```sh
+./webui.sh --skip-torch-cuda-test --use-cpu all --precision full --no-half
+```
+
+安装 cuda12.5版本
+### 升级 cuda 到 12.5版本
+
+首先打开 nvdia 官网 [[https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)] 下载，我的是 ubuntu 24.04 但还没有对应的版本，我就选择了 22.04 一样安装成功了。  
+
+安装步骤：
+```sh
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.5.0/local_installers/cuda-repo-ubuntu2204-12-5-local_12.5.0-555.42.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2204-12-5-local_12.5.0-555.42.02-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2204-12-5-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-5
+sudo apt-get install -y cuda-drivers
+
+```
+
 安装 的汉化扩展
 1.在任意目录下使用`git clone https://github.com/VinsonLaro/stable-diffusion-webui-chinese`
 
@@ -121,6 +143,7 @@ stable-diffusion-webui根目录中运行
 
 [https://civitai.com/](https://sspai.com/link?target=https%3A%2F%2Fcivitai.com%2F)
 https://www.liblib.art/
+
 
 
 参考:
